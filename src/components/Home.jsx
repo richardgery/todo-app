@@ -1,32 +1,19 @@
-import React, { useState, useEffect } from "react";
-
-import UserService from "../services/user.service";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [content, setContent] = useState("");
-
-  useEffect(() => {
-    UserService.getPublicContent().then(
-      (response) => {
-        setContent(response.data);
-      },
-      (error) => {
-        const _content =
-          (error.response && error.response.data) ||
-          error.message ||
-          error.toString();
-
-        setContent(_content);
-      }
-    );
-  }, []);
-
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3>
-      </header>
-    </div>
+    <>
+      <h1>Home page</h1>
+      <ul>
+        <li>
+          <Link to="/login">Login page</Link>
+        </li>
+        <li>
+          <Link to="/register">Register page</Link>
+        </li>
+      </ul>
+    </>
   );
 };
 
